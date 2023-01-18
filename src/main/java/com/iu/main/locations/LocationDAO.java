@@ -13,6 +13,28 @@ import com.iu.main.util.DBConnection;
 
 public class LocationDAO {
 	
+	public ArrayList<LocationDTO> getFind(String search) throws Exception {
+		ArrayList<LocationDTO> ar = new ArrayList<LocationDTO>();
+		Connection connection = DBConnection.getConnection();
+		String sql = "SELECT  * FROM LOCATIONS WHERE STREET_ADDRESS  LIKE '%?%'"; //앞뒤로 알아서 %%넣어줌
+		PreparedStatement st = connection.prepareStatement(sql);
+		st.setString(1, "%"+search+"%");
+		
+		ResultSet rs = st.executeQuery();
+		
+		while(rs.next()) {
+			
+			LocationDTO locationDTO = new LocationDTO();
+			locationDTO.setLOCATION_ID(rs.getInt("LOCATION_ID"));
+			locationDTO.setSTREET_ADDRESS(rs.getString("STREET_ADDRESS"));
+			locationDTO.setPOSTAL_CODE(rs.getString("POSTAL_CODE"));
+			locationDTO.setCITY(rs.getString("CITY"));
+			locationDTO.setSTATE_PROVINCE(rs.getString("STATE_PROVINCE"));
+			locationDTO.setCOUNTRY_ID(rs.getString("COUNTRY_ID"));
+			ar.add(locationDTO);
+		}
+	return ar;
+	}
 	
 	
 	public void getDetail(int LOCATION_ID) throws Exception {
@@ -61,12 +83,12 @@ public class LocationDAO {
 			locationDTO.setSTATE_PROVINCE(rs.getString("STATE_PROVINCE"));
 			locationDTO.setCOUNTRY_ID(rs.getString("COUNTRY_ID"));
 			ar.add(locationDTO);
-			System.out.println(rs.getInt("LOCATION_ID"));
-			System.out.println(rs.getString("STREET_ADDRESS"));
-			System.out.println(rs.getString("POSTAL_CODE"));
-			System.out.println(rs.getString("CITY"));
-			System.out.println(rs.getString("STATE_PROVINCE"));
-			System.out.println(rs.getString("COUNTRY_ID"));
+//			System.out.println(rs.getInt("LOCATION_ID"));
+//			System.out.println(rs.getString("STREET_ADDRESS"));
+//			System.out.println(rs.getString("POSTAL_CODE"));
+//			System.out.println(rs.getString("CITY"));
+//			System.out.println(rs.getString("STATE_PROVINCE"));
+//			System.out.println(rs.getString("COUNTRY_ID"));
 		}
 		DBConnection.disConnect(rs, st, connection);
 		return ar;
