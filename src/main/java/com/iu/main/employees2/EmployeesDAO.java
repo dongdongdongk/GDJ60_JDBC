@@ -67,5 +67,6 @@ public class EmployeesDAO {
 			employeesDTO.setHIRE_DATE(rs.getDate("HIRE_DATE"));
 			ar.add(employeesDTO);
 		}
+		DBConnection.disConnect(rs, st, connection);
 	}
 }

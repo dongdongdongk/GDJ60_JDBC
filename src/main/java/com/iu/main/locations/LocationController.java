@@ -4,35 +4,42 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LocationController {
-
-private Scanner sc;
-private LocationDAO locationDAO;
+	private Scanner sc;
+	private LocationDAO locationDAO;
+	
 	public LocationController() {
 		this.sc = new Scanner(System.in);
-		this.locationDAO = new LocationDAO();
+		locationDAO = new LocationDAO();
 	}
 	
+
+	
 	public void start() throws Exception {
-		boolean ck = true;
-		while(ck) {
-			System.out.println("1. 로케이션리스트");
-			System.out.println("2. 로케이션상세정보");
-			System.out.println("3. 종	 료");
+		boolean check=true;
+		 ArrayList<LocationDTO> ar=null;
+		while(check) {
+			System.out.println("1. 지역 리스트");
+			System.out.println("2. 지역상세정보");
+			System.out.println("3. 주소   검색");
+			System.out.println("4. 종      료");
 			int select = sc.nextInt();
+			
 			switch(select) {
 			case 1:
-				//locationDAO.getList();
-				ArrayList<LocationDTO> ar = locationDAO.getList();
+				ar = locationDAO.getList();
 				break;
 			case 2:
-				System.out.println("로케이션 번호입력");
+				System.out.println("지역 번호 입력");
 				select = sc.nextInt();
 				locationDAO.getDetail(select);
 				break;
-			default:
-				ck = false;
-				break;
+			case 3:
+				System.out.println("검색할 주소 입력");
+				String add = sc.next();
+				ar = locationDAO.getFind(add);
 				
+			default:
+				check=false;
 			}
 			
 		}

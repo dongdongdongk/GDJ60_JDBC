@@ -1,49 +1,52 @@
 package com.iu.main.locations;
 
 public class LocationDTO {
-	private Integer LOCATION_ID;
-	private String STREET_ADDRESS;
-	private String POSTAL_CODE;
-	private String CITY;
-	public String getPOSTAL_CODE() {
-		return POSTAL_CODE;
+	
+	private Integer location_id;
+	private String street_address;
+	private String postal_code;
+	private String city;
+	private String state_province;
+	private String country_id;
+	
+	
+	public Integer getLocation_id() {
+		return location_id;
 	}
-	public void setPOSTAL_CODE(String pOSTAL_CODE) {
-		POSTAL_CODE = pOSTAL_CODE;
+	public void setLocation_id(Integer location_id) {
+		this.location_id = location_id;
 	}
-	private String STATE_PROVINCE;
-	private String COUNTRY_ID;
-	public Integer getLOCATION_ID() {
-		return LOCATION_ID;
+	public String getStreet_address() {
+		return street_address;
 	}
-	public void setLOCATION_ID(Integer lOCATION_ID) {
-		LOCATION_ID = lOCATION_ID;
+	public void setStreet_address(String street_address) {
+		this.street_address = street_address;
 	}
-	public String getSTREET_ADDRESS() {
-		return STREET_ADDRESS;
+	public String getPostal_code() {
+		return postal_code;
 	}
-	public void setSTREET_ADDRESS(String sTREET_ADDRESS) {
-		STREET_ADDRESS = sTREET_ADDRESS;
+	public void setPostal_code(String postal_code) {
+		this.postal_code = postal_code;
 	}
-	public String getCITY() {
-		return CITY;
+	public String getCity() {
+		return city;
 	}
-	public void setCITY(String cITY) {
-		CITY = cITY;
+	public void setCity(String city) {
+		this.city = city;
 	}
-	public String getSTATE_PROVINCE() {
-		return STATE_PROVINCE;
+	public String getState_province() {
+		return state_province;
 	}
-	public void setSTATE_PROVINCE(String sTATE_PROVINCE) {
-		STATE_PROVINCE = sTATE_PROVINCE;
+	public void setState_province(String state_province) {
+		this.state_province = state_province;
 	}
-	public String getCOUNTRY_ID() {
-		return COUNTRY_ID;
+	public String getCountry_id() {
+		return country_id;
 	}
-	public void setCOUNTRY_ID(String cOUNTRY_ID) {
-		COUNTRY_ID = cOUNTRY_ID;
+	public void setCountry_id(String country_id) {
+		this.country_id = country_id;
 	}
 	
 	
-	
+
 }
