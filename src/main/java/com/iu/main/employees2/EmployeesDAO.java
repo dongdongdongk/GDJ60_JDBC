@@ -76,19 +76,19 @@ public class EmployeesDAO {
 	}
 	
 	//last_name
-	public void getFind(String serch)throws Exception {
+	public void getFind(int serch)throws Exception {
 		ArrayList<EmployeesDTO> ar = new ArrayList<EmployeesDTO>();
 		
 		Connection connection  = DBConnection.getConnection();
 		
-		String sql = "SELECT JOB_ID, EMAIL, EMPLOYEE_ID  FROM EMPLOYEES WHERE EMPLOYEE_ID=100";
+		String sql = "SELECT JOB_ID, EMAIL, EMPLOYEE_ID  FROM EMPLOYEES WHERE EMPLOYEE_ID=?";
 		PreparedStatement st = connection.prepareStatement(sql);
 		
-		st.setString(1, "%"+serch+"%" );
+		st.setInt(1, "%"+serch+"%" );
 		
 		ResultSet rs = st.executeQuery();
 		
-		while(rs.next()) {   //한줄 읽어야 데이터를 읽어올수
+		if(rs.next()) {   //한줄 읽어야 데이터를 읽어올수
 			EmployeesDTO employeesDTO = new EmployeesDTO();
 			employeesDTO.setJOB_ID(rs.getString("JOB_ID"));
 			employeesDTO.setEMAIL(rs.getString("EMAIL"));

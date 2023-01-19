@@ -34,7 +34,7 @@ public class EmployeesController {
 			case 2:
 				System.out.println("직원ID입력");
 				select = sc.nextInt();
-				
+				employeesDAO.getFind(select);
 			}
 		}
 	}
