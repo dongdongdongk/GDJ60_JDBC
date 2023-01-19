@@ -37,7 +37,10 @@ public class LocationController {
 				System.out.println("검색할 주소 입력");
 				String add = sc.next();
 				ar = locationDAO.getFind(add);
-				
+			case 4:
+				LocationInput locationInput = new LocationInput();
+				loca
+			
 			default:
 				check=false;
 			}
