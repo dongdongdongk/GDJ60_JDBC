@@ -4,13 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.iu.main.util.DBConnection;
 
 public class EmployeesDAO {
 
 	//월급의 평균
-	public void getAvg() throws Exception { 
+	public HashMap<String, Double> getAvg() throws Exception { 
 		Connection connection  = DBConnection.getConnection();
 		String sql = "SELECT AVG(SALARY)*12+100 AS A, SUM(SALARY) FROM EMPLOYEES";
 		
@@ -20,11 +21,21 @@ public class EmployeesDAO {
 		
 		rs.next();
 		
-		System.out.println(rs.getDouble("A"));
-		System.out.println(rs.getInt(2));
-		
+		//1.List 이용
+		//2.Array
+		//3.DTO (Class)
+		//4.Map()
+		HashMap<String,Double> map = new HashMap<String,Double>();
+		map.put("avg", rs.getDouble("A"));
+		map.put("sum",rs.getDouble(2));
 		
 		DBConnection.disConnect(rs, st, connection);
+		return map;
+		
+//		System.out.println(rs.getDouble("A"));
+//		System.out.println(rs.getInt(2));
+//		
+		
 	}
 	
 	
@@ -76,27 +87,27 @@ public class EmployeesDAO {
 	}
 	
 	//last_name
-	public void getFind(int serch)throws Exception {
+	public EmployeesDTO getFind(int serch)throws Exception {
 		ArrayList<EmployeesDTO> ar = new ArrayList<EmployeesDTO>();
 		
 		Connection connection  = DBConnection.getConnection();
+		EmployeesDTO employeesDTO = null;
 		
 		String sql = "SELECT JOB_ID, EMAIL, EMPLOYEE_ID  FROM EMPLOYEES WHERE EMPLOYEE_ID=?";
 		PreparedStatement st = connection.prepareStatement(sql);
 		
-		st.setInt(1, "%"+serch+"%" );
+		st.setInt(1, serch);
 		
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {   //한줄 읽어야 데이터를 읽어올수
-			EmployeesDTO employeesDTO = new EmployeesDTO();
+			employeesDTO = new EmployeesDTO();
 			employeesDTO.setJOB_ID(rs.getString("JOB_ID"));
 			employeesDTO.setEMAIL(rs.getString("EMAIL"));
 			employeesDTO.setEMPLOYEE_ID(rs.getInt("EMPLOYEE_ID"));
 			
 			
-			
-			ar.add(employeesDTO);
+			return employeesDTO;
 		}
 		DBConnection.disConnect(rs, st, connection);
 	}
