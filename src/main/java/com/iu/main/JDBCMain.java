@@ -16,6 +16,8 @@ public class JDBCMain {
 		LocationController lc = new LocationController();
 		DepartmentDAO departmentDAO = new DepartmentDAO();
 		com.iu.main.employees2.EmployeesController employeesController  = new com.iu.main.employees2.EmployeesController();
+		FrontController fc = new FrontController();
+		
 		try {
 //			lc.start();
 			employeesController.start();
