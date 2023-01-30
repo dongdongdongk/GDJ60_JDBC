@@ -107,8 +107,8 @@ public class EmployeesDAO {
 			employeesDTO.setEMPLOYEE_ID(rs.getInt("EMPLOYEE_ID"));
 			
 			
-			return employeesDTO;
 		}
+		return employeesDTO;
 		DBConnection.disConnect(rs, st, connection);
 	}
 }
