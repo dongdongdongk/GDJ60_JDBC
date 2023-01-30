@@ -18,6 +18,7 @@ public class EmployeesController {
 	
 	public void start() throws Exception {
 		ArrayList<EmployeesDTO> ar = null;
+		 EmployeesDTO employeesDTO = null;
 		boolean check = true;
 		while(check ) {
 			System.out.println("1. 직원 리스트");
@@ -34,7 +35,13 @@ public class EmployeesController {
 			case 2:
 				System.out.println("직원ID입력");
 				select = sc.nextInt();
-				employeesDAO.getFind(select);
+				employeesDTO = employeesDAO.getFind(select);
+				if(employeesDTO != null) {
+					employeesView.view(employeesDTO);
+				}else {
+					System.out.println("데이터가 없다.");
+				}
+				
 			}
 		}
 	}

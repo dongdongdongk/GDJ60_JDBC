@@ -1,7 +1,6 @@
 package com.iu.main;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -11,10 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.iu.main.departments.DepartmentDAO;
-import com.iu.main.departments.DepartmentDTO;
 
 /**
  * Handles requests for the application home page.
@@ -40,14 +35,5 @@ public class HomeController {
 		
 		return "home";
 	}
-	@RequestMapping("departments")
-	public ArrayList<DepartmentDTO> getDepartments(Model model) throws Exception { 
-		DepartmentDAO departmentDAO = new DepartmentDAO();
-		ArrayList<DepartmentDTO> ar	= departmentDAO.getList();
-		
-		model.addAttribute("list",ar);
-		return ar;
-	}
-	
 	
 }
