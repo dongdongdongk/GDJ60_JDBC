@@ -7,16 +7,16 @@ import java.util.ArrayList;
 
 import com.iu.main.util.DBConnection;
 
-public class EmployeesDAO_1 {
+public class EmployeesDAO {
 
-	public ArrayList<EmployeesDTO_1> getlist() throws Exception {
-		ArrayList<EmployeesDTO_1> ar = new ArrayList<EmployeesDTO_1>();
+	public ArrayList<EmployeesDTO> getlist() throws Exception {
+		ArrayList<EmployeesDTO> ar = new ArrayList<EmployeesDTO>();
 		Connection connection =DBConnection.getConnection();
 		String sql = "SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID, DEPARTMENT_ID  FROM EMPLOYEES ORDER BY HIRE_DATE ASC";
 		PreparedStatement st = connection.prepareStatement(sql);
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
-			EmployeesDTO_1 employeesDTO = new EmployeesDTO_1();
+			EmployeesDTO employeesDTO = new EmployeesDTO();
 			employeesDTO.setEMPLOYEE_ID(rs.getInt("EMPLOYEE_ID"));
 			employeesDTO.setFIRST_NAME(rs.getString("FIRST_NAME"));
 			employeesDTO.setJOB_ID(rs.getString("JOB_ID"));

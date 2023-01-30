@@ -1,6 +1,6 @@
 package com.iu.main;
 
-import com.iu.main.Employees.EmployeesController_1;
+import com.iu.main.Employees.EmployeesController;
 import com.iu.main.departments.DepartmentController;
 import com.iu.main.departments.DepartmentDAO;
 import com.iu.main.departments.DepartmentDTO;
@@ -15,14 +15,12 @@ public class JDBCMain {
 		DepartmentController dc = new DepartmentController();
 		LocationController lc = new LocationController();
 		DepartmentDAO departmentDAO = new DepartmentDAO();
-		com.iu.main.employees2.EmployeesController ep = new com.iu.main.employees2.EmployeesController();
+		com.iu.main.employees2.EmployeesController employeesController  = new com.iu.main.employees2.EmployeesController();
 		FrontController fc = new FrontController();
-		
-		
 		
 		try {
 //			lc.start();
-			ep.start();
+			employeesController.start();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

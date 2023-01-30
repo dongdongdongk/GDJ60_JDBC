@@ -2,7 +2,7 @@ package com.iu.main.Employees;
 
 import java.sql.Date;
 
-public class EmployeesDTO_1 {
+public class EmployeesDTO {
 	private Integer EMPLOYEE_ID;
 	private String FIRST_NAME;
 	private String LAST_NAME;

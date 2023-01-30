@@ -3,13 +3,13 @@ package com.iu.main.Employees;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class EmployeesController_1 {
+public class EmployeesController {
 
 	private Scanner sc;
-	EmployeesDAO_1 employeesDAO = new EmployeesDAO_1();
-	ArrayList<EmployeesDTO_1> en = null;
+	EmployeesDAO employeesDAO = new EmployeesDAO();
+	ArrayList<EmployeesDTO> en = null;
 	EmployeesView ev = new EmployeesView();
-	public EmployeesController_1() {
+	public EmployeesController() {
 		this.sc = new Scanner(System.in);
 	}
 	
